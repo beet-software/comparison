@@ -17,7 +17,7 @@ void main() {
     group('integer comparison', () {
       test('default order', () {
         final Comparator<int> comparator =
-        Comparator.from((o1, o2) => o1.compareTo(o2));
+            Comparator.from((o1, o2) => o1.compareTo(o2));
         expect(comparator(1, 0), higher.left);
         expect(comparator(1, 1), higher.none);
         expect(comparator(1, 2), higher.right);
@@ -36,7 +36,7 @@ void main() {
       });
       group('nulls higher', () {
         final Comparator<num?> comparator =
-        Comparator.nullsHigher(Comparator.naturalOrder());
+            Comparator.nullsHigher(Comparator.naturalOrder());
         test('without nulls', () {
           expect(comparator(1, 0), higher.left);
           expect(comparator(1, 1), higher.none);
@@ -50,7 +50,7 @@ void main() {
       });
       group('nulls lower', () {
         final Comparator<num?> comparator =
-        Comparator.nullsLower(Comparator.naturalOrder());
+            Comparator.nullsLower(Comparator.naturalOrder());
         test('without nulls', () {
           expect(comparator(1, 0), higher.left);
           expect(comparator(1, 1), higher.none);
@@ -64,7 +64,7 @@ void main() {
       });
       test('reversed', () {
         final Comparator<num> comparator =
-        Comparator.from((i0, i1) => i0.compareTo(i1));
+            Comparator.from((i0, i1) => i0.compareTo(i1));
         expect(comparator(1, 0), higher.left);
         expect(comparator(1, 1), higher.none);
         expect(comparator(1, 2), higher.right);
@@ -85,7 +85,7 @@ void main() {
         group('comparing key using', () {
           groupPointSingleComparison(
             Comparator.comparingByUsing<Point<int>, num>(
-                    (o) => o.x, Comparator.from((v0, v1) => v0.compareTo(v1))),
+                (o) => o.x, Comparator.from((v0, v1) => v0.compareTo(v1))),
           );
         });
       });
@@ -93,7 +93,8 @@ void main() {
         group('then comparing', () {
           groupPointMultipleComparison(
             Comparator<Point<int>>.from((o1, o2) => o1.x.compareTo(o2.x))
-                .thenComparing(Comparator.from((o1, o2) => o1.y.compareTo(o2.y))),
+                .thenComparing(
+                    Comparator.from((o1, o2) => o1.y.compareTo(o2.y))),
           );
         });
         group('then comparing key', () {
@@ -106,7 +107,7 @@ void main() {
           groupPointMultipleComparison(
             Comparator<Point<int>>.from((o1, o2) => o1.x.compareTo(o2.x))
                 .thenComparingByUsing<num>((o) => o.y,
-                Comparator<int>.from((v0, v1) => v0.compareTo(v1))),
+                    Comparator<int>.from((v0, v1) => v0.compareTo(v1))),
           );
         });
       });
