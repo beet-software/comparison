@@ -28,8 +28,23 @@ jobs:
       - name: Run tests
         run: dart test
 
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.3
+
+      - name: Install dependencies
+        run: dart pub get
+
       - name: Setup coverage builder
-        run: dart pub global activate test_coverage
+        run: dart pub global activate coverage
+
+      - name: Generate Dart coverage
+        run: dart test --coverage coverage
 
       - name: Generate coverage file
-        run: test_coverage --no-badge --port 8181
+        run: format_coverage -i coverage/test -o coverage/lcov.info --report-on lib --lcov

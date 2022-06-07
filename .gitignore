@@ -169,5 +169,5 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio,dart
 
 test/.test_coverage.dart
-coverage/lcov.info
+coverage/
 coverage_badge.svg
