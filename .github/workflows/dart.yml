@@ -48,3 +48,10 @@ jobs:
 
       - name: Generate coverage file
         run: format_coverage -i coverage/test -o coverage/lcov.info --report-on lib --lcov
+
+      - name: Push to Codecov
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          token: ${{ secrets.CODECOV_CI_TOKEN }}
+          files: coverage/lcov.info
+          fail_ci_if_error: true
