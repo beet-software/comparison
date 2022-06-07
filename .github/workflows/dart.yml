@@ -1,0 +1,57 @@
+name: Dart
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.3
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Verify formatting
+        run: dart format --output none --set-exit-if-changed --fix .
+
+      - name: Analyze project source
+        run: dart analyze --fatal-infos
+
+      - name: Run tests
+        run: dart test
+
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.3
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Setup coverage builder
+        run: dart pub global activate coverage
+
+      - name: Generate Dart coverage
+        run: dart test --coverage coverage
+
+      - name: Generate coverage file
+        run: format_coverage -i coverage/test -o coverage/lcov.info --report-on lib --lcov
+
+      - name: Push to Codecov
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          token: ${{ secrets.CODECOV_CI_TOKEN }}
+          files: coverage/lcov.info
+          fail_ci_if_error: true

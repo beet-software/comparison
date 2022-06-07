@@ -62,7 +62,7 @@ abstract class Comparator<T> {
   /// When both are `null`, they are considered equal. If both are non-null, [from]
   /// is used to determine the order. If [from] is null, then the returned
   /// comparator considers all non-null values to be equal.
-  static Comparator<T?> nullsLower<T extends Object>(Comparator<T?>? from) {
+  static Comparator<T?> nullsLower<T extends Object>(Comparator<T>? from) {
     return _NullComparator(from, nullFirst: true);
   }
 
@@ -72,7 +72,7 @@ abstract class Comparator<T> {
   /// When both are `null`, they are considered equal. If both are non-null, [from]
   /// is used to determine the order. If [from] is null, then the returned
   /// comparator considers all non-null values to be equal.
-  static Comparator<T?> nullsHigher<T extends Object>(Comparator<T?>? from) {
+  static Comparator<T?> nullsHigher<T extends Object>(Comparator<T>? from) {
     return _NullComparator(from, nullFirst: false);
   }
 
@@ -222,24 +222,16 @@ class _ReversedOrderComparator<T> extends Comparator<T> {
 
 class _ReverseOrderComparator<T extends Comparable<T>> extends Comparator<T> {
   @override
-  int call(Comparable<Object> o1, Comparable<Object> o2) {
-    return o2.compareTo(o1);
-  }
+  int call(Comparable<Object> o1, Comparable<Object> o2) => o2.compareTo(o1);
 
   @override
-  Comparator<T> reversed() {
-    return _NaturalOrderComparator();
-  }
+  Comparator<T> reversed() => _NaturalOrderComparator();
 }
 
 class _NaturalOrderComparator<T extends Comparable<T>> extends Comparator<T> {
   @override
-  int call(Comparable<Object> o1, Comparable<Object> o2) {
-    return o1.compareTo(o2);
-  }
+  int call(Comparable<Object> o1, Comparable<Object> o2) => o1.compareTo(o2);
 
   @override
-  Comparator<T> reversed() {
-    return _ReverseOrderComparator();
-  }
+  Comparator<T> reversed() => _ReverseOrderComparator();
 }
