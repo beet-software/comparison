@@ -70,17 +70,10 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
-      - name: Config aliases
-        run: |
-          mkdir bin
-          printf '#!/bin/bash\ndart pub "$@"' > bin/pub
-          echo "bin" | cat - $GITHUB_PATH > temp && mv temp $GITHUB_PATH
-          which pub
-
       - name: Push to pub.dev
-        uses: sakebook/actions-flutter-pub-publisher@v1.4.0
+        uses: k-paxian/dart-package-publisher@v1.4
         with:
-          credential: ${{ secrets.PUB_CREDENTIALS_JSON_DATA }}
-          flutter_package: false
-          skip_test: false
+          credentialJson: ${{ secrets.PUB_CREDENTIALS_JSON_DATA }}
+          format: false
+          skipTests: true
 
