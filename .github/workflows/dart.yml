@@ -32,4 +32,4 @@ jobs:
         run: dart pub global activate test_coverage
 
       - name: Generate coverage file
-        run: test_coverage --no-badge
+        run: test_coverage --no-badge --port 8181
