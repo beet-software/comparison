@@ -56,24 +56,3 @@ jobs:
           token: ${{ secrets.CODECOV_CI_TOKEN }}
           files: coverage/lcov.info
           fail_ci_if_error: true
-
-  pub:
-    runs-on: ubuntu-latest
-    needs:
-      - build
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Dart SDK
-        uses: dart-lang/setup-dart@v1.3
-
-      - name: Install dependencies
-        run: dart pub get
-
-      - name: Push to pub.dev
-        uses: k-paxian/dart-package-publisher@v1.4
-        with:
-          credentialJson: ${{ secrets.PUB_CREDENTIALS_JSON_DATA }}
-          format: false
-          skipTests: true
-
