@@ -69,9 +69,9 @@ jobs:
 
       - name: Config aliases
         run: |
-          shopt -s expand_aliases
-          alias pub="dart pub"
-          alias
+          printf '#!/bin/bash\ndart pub "$@"' > $HOME/.local/bin/pub
+          echo "$HOME/.local/bin" | cat - $GITHUB_PATH > temp && mv temp $GITHUB_PATH
+          which pub
 
       - name: Push to pub.dev
         uses: sakebook/actions-flutter-pub-publisher@v1.4.0
