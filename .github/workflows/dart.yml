@@ -69,8 +69,9 @@ jobs:
 
       - name: Config aliases
         run: |
-          shopt -c expand_aliases
+          shopt -s expand_aliases
           alias pub="dart pub"
+          alias
 
       - name: Push to pub.dev
         uses: sakebook/actions-flutter-pub-publisher@v1.4.0
