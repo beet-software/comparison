@@ -67,6 +67,11 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
+      - name: Config aliases
+        run: |
+          shopt -c expand_aliases
+          alias pub="dart pub"
+
       - name: Push to pub.dev
         uses: sakebook/actions-flutter-pub-publisher@v1.4.0
         with:
