@@ -4,6 +4,7 @@ A package that provides default, reversed and multiple field comparison.
 
 [![Pub version](https://img.shields.io/pub/v/comparison)](https://pub.dev/packages/comparison)
 [![Pub points](https://badges.bar/comparison/pub%20points)](https://pub.dev/packages/comparison/score)
+[![Codecov](https://codecov.io/gh/beet-software/comparison/branch/main/graph/badge.svg?token=RIXMWO86AA)](https://codecov.io/gh/beet-software/comparison)
 
 ## Getting started
 
