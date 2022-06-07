@@ -2,9 +2,9 @@ name: Dart
 
 on:
   push:
-    branches: [ "actions-setup" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "actions-setup" ]
+    branches: [ "main" ]
 
 jobs:
   build:
