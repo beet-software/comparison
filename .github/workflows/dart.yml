@@ -69,9 +69,9 @@ jobs:
 
       - name: Config aliases
         run: |
-          mkdir $HOME/bin
-          printf '#!/bin/bash\ndart pub "$@"' > $HOME/bin/pub
-          echo "$HOME/bin" | cat - $GITHUB_PATH > temp && mv temp $GITHUB_PATH
+          mkdir bin
+          printf '#!/bin/bash\ndart pub "$@"' > bin/pub
+          echo "bin" | cat - $GITHUB_PATH > temp && mv temp $GITHUB_PATH
           which pub
 
       - name: Push to pub.dev
