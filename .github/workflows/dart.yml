@@ -30,7 +30,8 @@ jobs:
 
   coverage:
     runs-on: ubuntu-latest
-
+    needs:
+      - build
     steps:
       - uses: actions/checkout@v3
 
@@ -58,6 +59,8 @@ jobs:
 
   pub:
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - uses: actions/checkout@v3
 
