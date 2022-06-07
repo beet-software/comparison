@@ -2,6 +2,7 @@
 
 A package that provides default, reversed and multiple field comparison.
 
+[![Actions](https://github.com/beet-software/comparison/actions/workflows/dart.yml/badge.svg)](https://github.com/beet-software/comparison.git)
 [![Pub version](https://img.shields.io/pub/v/comparison)](https://pub.dev/packages/comparison)
 [![Pub points](https://badges.bar/comparison/pub%20points)](https://pub.dev/packages/comparison/score)
 [![Codecov](https://codecov.io/gh/beet-software/comparison/branch/main/graph/badge.svg?token=RIXMWO86AA)](https://codecov.io/gh/beet-software/comparison)
