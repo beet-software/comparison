@@ -1,3 +1,8 @@
+## 0.1.1
+
+- Remove null handling inside callback of static methods `nullsLower` and `nullsHigher`
+  from `Comparison`.
+
 ## 0.1.0
 
 - Added `Comparison` class.
